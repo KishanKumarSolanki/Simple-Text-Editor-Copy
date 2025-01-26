@@ -1,0 +1,31 @@
+/* LinkedIn Color */
+.btn-linkedin-light {
+  background-color: #0077b5;
+  color: white;
+}
+
+.btn-linkedin-dark {
+  background-color: #005582;
+  color: white;
+}
+
+.btn-linkedin-light:hover, .btn-linkedin-dark:hover {
+  background-color: #005582;
+  color: white;
+}
+
+/* GitHub Color */
+.btn-github-light {
+  background-color: #333;
+  color: white;
+}
+
+.btn-github-dark {
+  background-color: #000;
+  color: white;
+}
+
+.btn-github-light:hover, .btn-github-dark:hover {
+  background-color: #000;
+  color: white;
+}
