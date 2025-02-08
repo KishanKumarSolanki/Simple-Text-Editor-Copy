@@ -61,6 +61,17 @@ export default function TextForm(props) {
         props.showAlert("Converted to Sentence Case!", "success");
     }
 
+    const handleDownload = () => {
+        const element = document.createElement("a");
+        const file = new Blob([text], { type: "text/plain" });
+        element.href = URL.createObjectURL(file);
+        element.download = "textfile.txt";
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+        props.showAlert("Text downloaded!", "success");
+    };
+    
 
     const [isBold, setBold] = useState();
     const [isItalic, setItalic] = useState(true);
@@ -80,6 +91,7 @@ export default function TextForm(props) {
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleBold}>Text Bold</button>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleItalic}>Text Italic</button>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleDownload}>Download Text</button>
                 <button disabled={text.length === 0} className="btn btn-danger mx-1 my-1" onClick={handleClearClick}>Clear Text</button>
             </div>
             <div className="container my-3" style={{ color: props.mode === 'dark' ? 'white' : '#042743' }}>
@@ -87,7 +99,7 @@ export default function TextForm(props) {
                 <p>{text.split(/\s+/).filter((element) => { return element.length !== 0 }).length} words and {text.length} characters</p>
                 <p>{0.008 * text.split(/\s+/).filter((element) => { return element.length !== 0 }).length} Minutes read</p>
                 <h2>Preview</h2>
-                <p>{text.length > 0 ? text : "Nothing to preview!"}</p>
+                <p  style={{ fontWeight: isBold ? "bold" : "normal", fontStyle: isItalic ? 'Normal' : 'Italic'}}>{text.length > 0 ? text : "Nothing to preview!"}</p>
             </div>
         </>
     )
