@@ -73,7 +73,7 @@ export default function TextForm(props) {
     };
 
 
-    const [setUtterance] = useState(null);
+    const [utterance,setUtterance] = useState(null);
     const synth = window.speechSynthesis;
     const handleSpeak = () => {
         if (synth.speaking) {
